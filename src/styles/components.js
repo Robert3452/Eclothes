@@ -10,6 +10,9 @@ export const colors = {
   pink: "#f58b8d",
 }
 
+
+
+
 export const StyledSliderContainer = styled.section`
   position: relative;
   width: 100%;
@@ -20,8 +23,8 @@ export const SliderImages = styled.div`
   width:100%;
   overflow:hidden;
   & > div {
-  max-height: 800px;
-  height: 80vh;
+    max-height: 800px;
+    height: 80vh;
     width: 100%;
     min-width:100vw;
     position: relative;
@@ -31,10 +34,37 @@ export const SliderImages = styled.div`
       width:100%;
       object-fit: cover ;
     }
+    & > .content_item{
+      background-color: rgba(0,0,0,0.1);
+      position: absolute;
+      width: 100%;
+      color:white;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column; 
+      & > h2{
+        font-size:  7rem;
+        margin-bottom: 10px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      & > span{
+        font-size:  1.1rem;
+        text-transform: uppercase;
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 6px;
+        margin-bottom: 0px;
+      }
   }
+  }
+
+  
+
 `
 
-export const NavButton = styled.a`
+export const NavButton = styled.button`
   position: absolute;
   cursor: pointer;
   outline: none;
@@ -83,7 +113,7 @@ export const StyledButton = styled.button`
 `
 
 export const StyledContent = styled.div`
-  padding: 40px 40px;
+  /* padding: 40px 40px; */
   box-sizing: content-box;
 
   h2{
@@ -114,17 +144,53 @@ export const StyledNews = styled.div`
   .primary_image{
     grid-area:primary_image;
     padding:0;
+    & > .gatsby-image-wrapper{
+      height:100%;
+    }
   }
   .new_content{
     grid-area:new_content;
-    background-color:${colors.red}
+    background-color:${colors.red};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 30px;
+    box-sizing:content-box;
   }
   .secondary_image{
     padding: 0px;
     grid-area:secondary_image;
     & > .gatsby-image-wrapper{
       min-height:255px;
+      width:100%;
+      object-fit:contain;
+      height:100%;
     }
   }
+`
 
+export const StyledDots = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content:center;
+  bottom: 10%;
+  width: 100%;
+  & > div{
+    display: flex;
+    min-width: 80px;
+    max-width: 200px;
+    justify-content: space-evenly;
+    & > a{
+      cursor: pointer;
+      margin: auto;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border:2px solid white ;
+    }
+    & > .current{
+      background-color: ${colors.red}
+    }
+  }
 `
