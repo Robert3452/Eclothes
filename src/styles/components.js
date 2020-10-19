@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { above } from '../styles';
 
 export const colors = {
@@ -9,13 +9,20 @@ export const colors = {
   black: "#000",
   pink: "#f58b8d",
 }
-
-
-
-
 export const StyledSliderContainer = styled.section`
   position: relative;
   width: 100%;
+`
+
+
+const fade = keyframes`
+  from{
+    opacity: .4;
+  }
+
+  to{
+    opacity: 1;
+  }
 `
 export const SliderImages = styled.div`
   display: flex;
@@ -23,6 +30,7 @@ export const SliderImages = styled.div`
   width:100%;
   overflow:hidden;
   & > div {
+    animation: ${fade} 1.8s ;
     max-height: 800px;
     height: 80vh;
     width: 100%;
@@ -35,7 +43,7 @@ export const SliderImages = styled.div`
       object-fit: cover ;
     }
     & > .content_item{
-      background-color: rgba(0,0,0,0.1);
+      background-color: rgba(0,0,0,0.4);
       position: absolute;
       width: 100%;
       color:white;
@@ -49,6 +57,10 @@ export const SliderImages = styled.div`
         font-size:  7rem;
         margin-bottom: 10px;
         font-family: 'Montserrat', sans-serif;
+        ${above.medium`
+          font-size: 3.5rem ;
+        `
+        }
       }
       & > span{
         font-size:  1.1rem;
@@ -59,9 +71,6 @@ export const SliderImages = styled.div`
       }
   }
   }
-
-  
-
 `
 
 export const NavButton = styled.button`
@@ -86,6 +95,10 @@ export const NavButton = styled.button`
   &:hover{
     transition: .3s;
     background-color:rgba( 0, 0, 0, 0.5 );
+    ${above.small`
+      transition: unset;
+      background-color: transparent;
+    `}
   }
 `
 
@@ -135,9 +148,10 @@ export const StyledNews = styled.div`
   grid-template-areas:"primary_image new_content"
   "primary_image secondary_image";
   ${above.medium`
-    grid-template-rows:unset;
-    grid-auto-rows: unset;
+    grid-auto-rows: 255px;
     grid-template-areas:"primary_image primary_image"
+    "primary_image primary_image"
+    "new_content new_content"
     "new_content new_content"
     "secondary_image secondary_image";
   `}
@@ -182,6 +196,7 @@ export const StyledDots = styled.div`
     max-width: 200px;
     justify-content: space-evenly;
     & > a{
+
       cursor: pointer;
       margin: auto;
       width: 18px;
@@ -194,3 +209,5 @@ export const StyledDots = styled.div`
     }
   }
 `
+
+

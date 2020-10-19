@@ -26,9 +26,10 @@ export default function Slider() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [numbSlides, setNumbSlides] = useState(0);
     var banner = [];
-    banner.push(searchImageInNodes(data.allFile.edges, "banner1.jpg"));
-    banner.push(searchImageInNodes(data.allFile.edges, "banner2.jpg"));
-    banner.push(searchImageInNodes(data.allFile.edges, "banner3.jpg"));
+    banner.push({ fluid: searchImageInNodes(data.allFile.edges, "banner1.jpg"), title: "Sneakers", detail: "See how good they feel." });
+    banner.push({ fluid: searchImageInNodes(data.allFile.edges, "banner2.jpg"), title: "Adidas", detail: "For all walks of life." });
+    banner.push({ fluid: searchImageInNodes(data.allFile.edges, "banner3.jpg"), title: "Nike", detail: "See how good they feel." });
+    banner.push({ fluid: searchImageInNodes(data.allFile.edges, "banner4.jpg"), title: "Heels", detail: "For all walks of life." });
 
     const selectSlide = (number) => setCurrentSlide(number)
 
@@ -54,10 +55,10 @@ export default function Slider() {
                             key={index}
                             style={{ display: `${index === currentSlide ? 'flex' : 'none'}` }}
                             className="slider_item">
-                            <Img fluid={el.node.childImageSharp.fluid} />
+                            <Img fluid={el.fluid.node.childImageSharp.fluid} />
                             <div className="content_item">
-                                <h2>Sneakers</h2>
-                                <span>See how good they feel</span>
+                                <h2>{el.title}</h2>
+                                <span> {el.detail}</span>
                             </div>
                         </div>)
                     )}
