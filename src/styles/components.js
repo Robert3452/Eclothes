@@ -216,6 +216,7 @@ export const StyledDots = styled.div`
     }
   }
 `
+
 export const StyledHeader = styled.header`
   position: fixed;
   width: 100%;
@@ -224,16 +225,24 @@ export const StyledHeader = styled.header`
   flex-wrap: wrap;
   padding: 20px 50px;
   align-items: center;
-  justify-content: space-between;
-  .active {
-    background-color: rgba(0, 0, 0, .5);
+  justify-content: flex-end;
+  &.active {
+    ${above.small`
+      transition: 1s;
+      height: 120px;
+      padding: 5px 20px ;
+      align-items: flex-start;
+      justify-content: flex-end;
+    `}
   }
-  ${above.small`
-    height: 110px;
-    padding: 5px ;
-    justify-content: center; 
-
-  `
+  &.disable{
+    ${above.small`
+      transition: 1s;
+      height: 120px;
+      padding: 5px 20px ;
+      align-items: flex-end;
+      justify-content: flex-start; 
+  `}
 
   }
   & > .btn_container{
@@ -252,7 +261,7 @@ export const StyledHeader = styled.header`
       border-radius: 2px;
       height: 25px;
       width: 25px;
-      background-color: rgba(255,255,255,.2); 
+      background-color: rgba(0,0,0,.5); 
     }
   }
 `
@@ -307,6 +316,9 @@ export const StyledNavBar = styled.div`
 `
 
 export const Logo = styled.div`
+position: absolute;
+z-index: 2;
+top: 5%;
 display:flex;
 text-align: center;
 flex-direction: row;
@@ -314,7 +326,7 @@ width: 250px;
 justify-content:center;
 margin-right:5px;
 font-size: 1.2rem;
-animation: ${fade} 1.8s ;
+/* animation: ${fade} 1.8s ; */
   & > a{
     text-transform: uppercase;
     border: 1px solid white; 
@@ -334,6 +346,35 @@ animation: ${fade} 1.8s ;
 
       }
  }
+`
+
+export const StyledNavigator = styled.ul`
+  margin: 0px;
+  display: flex;
+  list-style: none;
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  & > li{
+    & > a{
+      transition: .5s;
+      color: white;
+      text-decoration: none;
+      & > i{
+        padding:0 10px; 
+        color: white;
+
+        &:hover{
+          color: white;
+        }
+      }
+      
+      &:hover{
+        transition: .5s;
+        color: ${colors.red};
+      }
+    }
+  }
 `
 
 export const StyledOffers = styled.div`
@@ -431,6 +472,10 @@ export const StyledFooter = styled.footer`
     align-items: flex-start;
     justify-content: flex-start;
     padding: 10px 30px;
+    ${above.small`
+      padding: 10px 20px;
+
+    `}
     & > .social_icons{
       display: flex;
       width: 50%;
@@ -472,9 +517,11 @@ export const StyledFooter = styled.footer`
       width:100%;
       & > li{
           display: flex;
+          margin-bottom: 8px;
           justify-content: flex-start;
         & > a {
           text-decoration: none;
+          font-size:14px;
           color: rgba(255,255,255,0.5);
           transition: .3s;
           &:hover{
@@ -509,6 +556,173 @@ export const StyledFooter = styled.footer`
     }
 
   }
+`
 
+export const Container = styled.div`
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 
 `
+
+export const StyledShop = styled.div`
+  padding: 20px  0 ;
+  min-height: 700px;
+  width:100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "filtersArea productsArea productsArea productsArea" ;
+  gap: 20px;
+  ${above.medium`
+    grid-template-areas: "filtersArea filtersArea filtersArea filtersArea" 
+                        "productsArea productsArea productsArea productsArea";
+
+  `}
+`
+
+export const StyledFilters = styled.div`
+  border: 1px solid rgba(0,0,0,.2);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: content-box;
+  padding: 20px ;
+  grid-area: filtersArea;
+  ${above.medium`
+    padding: 20px 10px;
+
+  `}
+`
+
+export const StyledProducts = styled.div`
+  border: 1px solid rgba(0,0,0,.2);
+  grid-area: productsArea;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(400px, 450px);
+  gap: 12px;
+  display: grid;
+  padding: 20px; 
+  ${above.large`
+    grid-template-columns: repeat(2, 1fr);
+  `}
+`
+export const StyledItemProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: flex-start;
+  grid-column: span 1;
+  border: 1px solid rgba(0,0,0,.2);
+  padding: 10px;
+ 
+  ${above.small`
+    grid-column: span 3;
+  `}
+  & > a{
+    cursor: pointer;
+    width: 100%;
+    & > .productImage{
+      width: 100%;
+      height: 300px;
+      margin-bottom: 15px;
+      & > img{
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0px;
+      }
+    }
+    & > .productTitle{
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    & > .priceSide{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "original discount ."
+                           "offer . btn_cart";
+      align-items: center;
+      align-content: center;                 
+      flex-direction: column;
+      & > .originalProductPrice{
+        grid-area: original;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: line-through; 
+        &.withOffer{
+          color: rgba(0,0,0,.5);
+        }
+      }
+        & > .discount{
+        text-decoration: none; 
+        font-size: 16px;
+        font-weight: bold;
+        grid-area: discount;
+        }
+      & > .priceOffered{
+        grid-area: offer;
+        font-size: 18px; 
+        font-weight: bold;
+        color: ${colors.red};
+      }
+      & > .btn_cart{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 14px;
+          margin-left: auto; 
+          margin-right: auto; 
+          grid-area: btn_cart;
+          padding: 8px;
+          color: white;
+          background-color: #000;
+          border: none; 
+          cursor: pointer;
+          transition: .5s;
+          &:hover{
+          transition: 1s;
+            background-color: ${colors.red};
+          }
+        }
+    }
+  }
+`
+
+export const SearchField = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  & > span { 
+    color: black;
+  }
+  & > div{
+    display:flex;
+    width: 100%;
+
+    & > input{
+      width: 80% ;
+      background-color: rgba(0,0,0,.1);
+      border:none;
+      color: rgba(0,0,0,.5);
+      box-sizing: content-box;
+      outline: white;
+      padding: 0px 5px;
+      &::placeholder{
+        color: rgba(0,0,0,.9);
+      }
+    }
+    & > button{
+      background-color: black;
+      text-align:center;
+      width: 30px;
+      height: 30px;
+      border: none;
+      font-size:12px;
+      color: white;
+    }
+  }
+`
+

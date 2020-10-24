@@ -7,10 +7,8 @@ import { Slider, News, Header, Footer } from '../components';
 export default function Home() {
   return (
     <>
-      <Header />
       <Slider />
       <News />
-      <Footer />
     </>
   )
 }

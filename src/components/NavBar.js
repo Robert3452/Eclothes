@@ -18,19 +18,8 @@ export default function NavBar() {
     return (
         <>
 
-            <StyledHeader
-                style={
-                    {
-                        backgroundColor: `${yOffset
-                            ? 'transparent' : 'rgba(0, 0, 0, .5)'}`,
-                        transition: '.3s'
-                    }} >
-                <Logo>
-                    <a href="">
-                        <span>Downy</span>
-                        <p>clothes</p>
-                    </a>
-                </Logo>
+            <StyledHeader className={`${yOffset ? 'disable' : 'active'}`}  >
+
                 <div className="btn_container">
                     <button className="nav_btn">
                         <FontAwesomeIcon icon={['fas', 'shopping-cart']} />
