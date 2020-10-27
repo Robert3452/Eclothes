@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { Link } from 'gatsby';
 import { StyledFooter } from '../styles/components'
 
 
@@ -15,9 +15,9 @@ export default function Footer() {
                 vel illum ea velit doloribus.</p>
                 <div className="social_icons">
                     <div className="fb_icon">
-                        <a href="https://www.facebook.com/robert.mezagarcia">
+                        <Link to="https://www.facebook.com/robert.mezagarcia">
                             <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-                        </a>
+                        </Link>
                     </div>
                     <div className="twitter_icon">
                         <a href="https://twitter.com/romeza1239">
@@ -34,8 +34,8 @@ export default function Footer() {
             <div className="">
                 <h3><strong>Our</strong> Information</h3>
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Shop now</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/shop">Shop now</Link></li>
                 </ul>
             </div>
             <div className="">
@@ -56,7 +56,7 @@ export default function Footer() {
                         </div>
                         <div className="text_contact" >
                             <h6>Email Address</h6>
-                            <span>Email: <a href="">romeza1239@gmail.com</a> </span>
+                            <span>Email: <a href = "mailto: romeza1239@gmail.com">romeza1239@gmail.com</a> </span>
                         </div>
                     </li>
                     <li>

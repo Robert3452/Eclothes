@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyledSliderContainer, PrevButton, NextButton, Logo, SliderImages, StyledDots } from '../styles/components'
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import { searchImageInNodes } from '../utils/searchInArrays';
-import { Link } from 'gatsby'
 import Img from 'gatsby-image';
 
 export default function Slider() {
@@ -51,10 +50,10 @@ export default function Slider() {
         <>
             <StyledSliderContainer>
                 <Logo>
-                    <a href="">
+                    <Link to="/">
                         <span>Downy</span>
                         <p>clothes</p>
-                    </a>
+                    </Link>
                 </Logo>
                 <SliderImages>
                     {banner.map((el, index) =>
@@ -73,10 +72,10 @@ export default function Slider() {
                 <StyledDots>
                     <div style={{ minWidth: `${banner.length > 3 ? '120px' : '80px'}` }}>
                         {banner.map((_el, index) => (
-                            <a
+                            <button
                                 onClick={() => { selectSlide(index) }}
                                 key={index}
-                                className={`${index === currentSlide ? 'current' : ''}`}>{''}</a>
+                                className={`${index === currentSlide ? 'current' : ''}`}>{''}</button>
                         ))}
                     </div>
                 </StyledDots>

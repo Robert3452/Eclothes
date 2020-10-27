@@ -1,7 +1,7 @@
 import React from "react"
 // import News from '../components/News'
 // import Slider from '../components/Slider'
-import { Slider, News, Header, Footer } from '../components';
+import { Slider, News } from '../components';
 
 
 export default function Home() {

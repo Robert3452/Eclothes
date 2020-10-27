@@ -202,8 +202,8 @@ export const StyledDots = styled.div`
     min-width: 80px;
     max-width: 200px;
     justify-content: space-evenly;
-    & > a{
-
+    & > button{
+      background-color: transparent;
       cursor: pointer;
       margin: auto;
       width: 18px;
@@ -579,12 +579,167 @@ export const StyledShop = styled.div`
 
   `}
 `
+export const StyledSectionFilter = styled.div`
+    display: flex;
+    width: 100%; 
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    & a{ 
+      color: black;
+      text-decoration: none;
+      font-size:15px;
+    }
+
+    & > h4.filterTitle{
+      font-weight: 500;
+      color: ${colors.red};
+      text-align: start;
+      font-size: 18px; 
+      margin-bottom: 10px;
+    }
+    & > hr{
+      color: ${colors.red};
+      /* background-color: ${colors.red}; */
+      width: 99%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+    
+    & > ul{
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin-left: 0px;
+      padding-bottom: 10px ; 
+      margin-bottom: 5px;
+      border-bottom: 1px rgba(0,0,0,0.2) solid;
+      width: 100%;
+      & > li{
+        margin-bottom: 2px;
+        & > a {
+          /* font-size: 13px; */
+          color: black;
+          text-decoration: none;
+        }
+      }
+      & > ul{
+        margin-bottom: 0px;
+        & >li{
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+`
+export const StyledPriceRange = styled.div`
+  width: 100%; 
+   & > h4.filterTitle{
+      font-weight: 500;
+      color: ${colors.red};
+      text-align: start;
+      font-size: 18px; 
+      margin-bottom: 10px;
+    }
+
+    & > ul{ 
+      display: flex;
+      margin-left: 0px;
+      flex-direction: column;
+      list-style: none;
+      margin-left: 0px;
+      padding-bottom: 10px;
+      border-bottom: 1px rgba(0,0,0,0.2) solid;
+      width: 100%;
+      & > li{
+        margin-bottom: 2px;
+        font-size: 15px;
+        & > ul{
+          margin-left: 0px;
+          margin-bottom: 0px;
+          margin-top: 0px;
+          & > li{
+            width: 100%;
+            display: flex;
+            & > .priceRange{
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+
+`
+export const DropDown = styled.button`
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  background-color: transparent;
+  border:none;
+  outline: none;
+  justify-content: space-between;
+  border-radius: 2px;
+  padding: 2px; 
+  &:active,&:focus{
+    border: 1px solid ${colors.red};
+    /* -webkit-box-shadow: 0px 0px 5px 0px ${colors.red};
+    -moz-box-shadow: 0px 0px 5px 0px ${colors.red};
+    box-shadow: 0px 0px 5px 0px ${colors.red}; */
+  }
+`
+
+export const PriceRange = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  & > .dash{
+    justify-self: center;
+    align-self: flex-end;
+  }
+  & > div{
+    max-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    & > span{
+      font-size: 14px;
+      color: ${colors.red};
+    }
+    & > input{
+      max-width: 100%; 
+      padding: 5px;
+      font-size: 12px;
+      border: 1px solid black;
+      border-radius: 4px; 
+      outline: none;
+      &:active,&:focus{
+        -webkit-box-shadow: 0px 0px 2px 0px ${colors.red};
+        -moz-box-shadow: 0px 0px 2px 0px ${colors.red};
+        box-shadow: 0px 0px 2px 0px ${colors.red};
+        border: 1px solid ${colors.red};
+
+      }
+    }
+  }
+`
+
+export const ArrowDownButton = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 4px;
+`
 
 export const StyledFilters = styled.div`
   border: 1px solid rgba(0,0,0,.2);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  flex-direction: column;
   box-sizing: content-box;
   padding: 20px ;
   grid-area: filtersArea;
@@ -621,6 +776,8 @@ export const StyledItemProduct = styled.div`
   & > a{
     cursor: pointer;
     width: 100%;
+    text-decoration: none;
+    color: unset;
     & > .productImage{
       width: 100%;
       height: 300px;
@@ -632,10 +789,17 @@ export const StyledItemProduct = styled.div`
         margin-bottom: 0px;
       }
     }
+    & > hr{
+      margin-bottom: 5px;
+    }
     & > .productTitle{
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 10px;
+    }
+    &:hover .productTitle{
+      transition: .2s;
+      color:${colors.red};
     }
     & > .priceSide{
       display: grid;

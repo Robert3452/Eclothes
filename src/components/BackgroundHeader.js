@@ -1,6 +1,6 @@
 import React from 'react'
 import { Logo, StyledNavigator } from '../styles/components';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, Link, StaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import styled from 'styled-components'
 
@@ -26,7 +26,7 @@ export const BackgroundHeader = ({ className }) => (
                     backgroundColor={'#040e18'}
                 >
                     <Logo>
-                        <a href="">
+                        <a href="/">
                             <span>Downy</span>
                             <p>clothes</p>
                         </a>
@@ -34,14 +34,14 @@ export const BackgroundHeader = ({ className }) => (
 
                     <StyledNavigator>
                         <li>
-                            <a href="">
+                            <Link to="/">
                                 Home<i>|</i>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="">
+                            <Link to="/shop">
                                 Shop
-                            </a>
+                            </Link>
                         </li>
                     </StyledNavigator>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { StyledHeader, StyledNavBar, Logo } from '../styles/components'
+import { StyledHeader, StyledNavBar } from '../styles/components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'gatsby'
 
 export default function NavBar() {
     const [active, setActive] = useState(false);
@@ -38,9 +39,8 @@ export default function NavBar() {
                     <FontAwesomeIcon icon={["fas", "times"]} />
                 </button>
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Shop now</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/shop">Shop now</Link></li>
                 </ul>
             </StyledNavBar>
 
