@@ -4,3 +4,6 @@ export { default as Header } from './NavBar';
 export { default as Footer } from './Footer';
 export { default as Layout } from './Layout';
 export { default as BackgroundHeader } from './BackgroundHeader';
+export { default as FilterSection } from './FilterSection';
+export { default as Products } from './Products';
+export { default as DropDownButton } from './DropDownButton';

@@ -4,7 +4,7 @@ import { graphql, Link, StaticQuery } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import styled from 'styled-components'
 
-export const BackgroundHeader = ({ className }) => (
+export const BackgroundHeader = ({ className, path, url }) => (
     <StaticQuery
         query={graphql`
             query {
@@ -26,10 +26,10 @@ export const BackgroundHeader = ({ className }) => (
                     backgroundColor={'#040e18'}
                 >
                     <Logo>
-                        <a href="/">
+                        <Link to="/">
                             <span>Downy</span>
                             <p>clothes</p>
-                        </a>
+                        </Link>
                     </Logo>
 
                     <StyledNavigator>
@@ -39,8 +39,8 @@ export const BackgroundHeader = ({ className }) => (
                             </Link>
                         </li>
                         <li>
-                            <Link to="/shop">
-                                Shop
+                            <Link to={`/${url}`}>
+                                {path}
                             </Link>
                         </li>
                     </StyledNavigator>

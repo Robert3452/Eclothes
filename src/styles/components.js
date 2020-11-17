@@ -726,14 +726,6 @@ export const PriceRange = styled.div`
   }
 `
 
-export const ArrowDownButton = styled.button`
-  cursor: pointer;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  padding: 4px;
-`
-
 export const StyledFilters = styled.div`
   border: 1px solid rgba(0,0,0,.2);
   display: flex;
@@ -813,8 +805,8 @@ export const StyledItemProduct = styled.div`
         grid-area: original;
         font-size: 16px;
         font-weight: bold;
-        text-decoration: line-through; 
         &.withOffer{
+          text-decoration: line-through; 
           color: rgba(0,0,0,.5);
         }
       }
@@ -888,5 +880,167 @@ export const SearchField = styled.div`
       color: white;
     }
   }
+`
+export const StyledProductDetail = styled.div`
+  width: 80%;
+  padding:  50px 0px ;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(3 , 1fr);
+  gap: 20px;
+  grid-template-areas: "imageSide contentSide contentSide"; 
+  ${above.small`
+    grid-template-areas: "imageSide imageSide imageSide"
+                         "contentSide contentSide contentSide"; 
+  `}
+  & > .imageSide{
+    grid-area: imageSide;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap: 10px;
+    & > button{
+      background-color: transparent;
+      margin: 0px; 
+      cursor: pointer;
+      outline: none;
+      height: 100%;
+      border:1px solid rgba(0,0,0,.5);
+    }
+    & > .primaryImage{
+      grid-column: span 3;
+      width: 100%;
+      & > img{
+        object-fit: fill;
+        width: 100%; 
+        height: 100%;
+        margin:0;
+      }
+    }
+    & > .secondaryImages{
+      & > img{
+        object-fit: fill;
+        margin:0;
+        width: 100%; 
+        height: 100%;
+      }
+      cursor: pointer;
+      grid-column: span 1;
+    }
+  } 
+
+
+
+  & > .contentSide{
+    grid-area: contentSide;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    & > .wrapperFeatures{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) ;
+      grid-template-rows: repeat(2, 50px);
+      gap: 10px;
+      grid-template-areas:"";
+      width: 100%;
+      ${above.medium`
+      grid-template-columns: repeat(2, 1fr) ;
+
+      `}
+      & > .addCart{
+        min-width: 135px;
+        max-height: 40px;
+        width: 100%;
+        grid-column:span 1 ;
+        grid-row: 2 / 3;
+        & > button{
+          height: 100%;
+          width: 100%;
+          &:hover{
+            background-color: ${colors.red};
+            color: white;
+          }
+        }
+      }
+    }
+    & > .productName{
+      font-size: 26px;
+      font-weight: 600;
+      color: ${colors.red};
+      margin-bottom: 10px;
+    }
+    & > .productPrice{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    & > .productDescription{
+      min-height: 120px;
+      max-height: 200px;
+    }
+
+  }
+`
+
+export const StyledDropDownMenu = styled.div`
+display:flex;
+flex-direction: column;
+position: relative;
+background-color:${colors.white};
+  &:nth-child(2){
+    z-index: 1;
+  }
+  & > button{
+    display: flex;
+    height: 40px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .6);
+    outline: none;
+    min-width: 80px;
+    max-width: 200px;
+    border-radius: 4%;
+    background-color: transparent;
+    align-items: center;
+    justify-content: space-between;
+  }
+  & > ul{
+    position: absolute;
+    width: 100%;
+    background-color: white;  
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    min-width: 80px;
+    max-width: 200px;
+    margin: 0;
+    border: 1px solid rgba(0,0,0,.6);
+    align-items: center;
+    justify-content: center;
+    &.hide{
+      display: none;
+    }
+    & > li{
+      margin: 0;
+      cursor: pointer;
+      text-align: center;
+      width:100%;
+      color: black;
+      & > button{
+        padding: 5px;
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        background-color:transparent;
+      }
+      &:hover{
+        background-color:rgba(0,0,0,.1) ;
+      }
+    }
+  }
+
+`
+export const DropDownItems = styled.ul`
+ 
 `
 
