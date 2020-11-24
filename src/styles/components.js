@@ -761,6 +761,7 @@ export const StyledItemProduct = styled.div`
   grid-column: span 1;
   border: 1px solid rgba(0,0,0,.2);
   padding: 10px;
+  height: 420px;
  
   ${above.small`
     grid-column: span 3;
@@ -785,25 +786,38 @@ export const StyledItemProduct = styled.div`
       margin-bottom: 5px;
     }
     & > .productTitle{
+      width: 95%;
+      margin-left:auto;
+      margin-right: auto;
       font-size: 16px;
       font-weight: bold;
+      text-align: center;
       margin-bottom: 10px;
     }
     &:hover .productTitle{
       transition: .2s;
       color:${colors.red};
     }
-    & > .priceSide{
+  
+  }
+
+  & > .priceSide{
+      width:80%;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      margin-right:auto;
+      margin-left:auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-areas: "original discount ."
-                           "offer . btn_cart";
+      grid-template-areas: "original discount btn_cart ";
       align-items: center;
       align-content: center;                 
       flex-direction: column;
       & > .originalProductPrice{
         grid-area: original;
-        font-size: 16px;
+        justify-self:flex-start;
+        font-size: 20px;
+        color: ${colors.red}; 
         font-weight: bold;
         &.withOffer{
           text-decoration: line-through; 
@@ -824,12 +838,16 @@ export const StyledItemProduct = styled.div`
       }
       & > .btn_cart{
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
           font-size: 14px;
-          margin-left: auto; 
-          margin-right: auto; 
+          /* justify-self: flex-end; */
           grid-area: btn_cart;
+          width: 30px;
+          height: 30px;
+          margin-right:10px;
+          margin-left:auto;
+
           padding: 8px;
           color: white;
           background-color: #000;
@@ -842,7 +860,6 @@ export const StyledItemProduct = styled.div`
           }
         }
     }
-  }
 `
 
 export const SearchField = styled.div`
@@ -975,8 +992,7 @@ export const StyledProductDetail = styled.div`
       font-weight: bold;
     }
     & > .productDescription{
-      min-height: 120px;
-      max-height: 200px;
+      max-height: 120px;
     }
 
   }

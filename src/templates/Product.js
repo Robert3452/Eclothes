@@ -4,7 +4,7 @@ import { BackgroundHeader, DropDownButton } from '../components'
 import { StyledProductDetail, StyledDropDownMenu, StyledButton } from '../styles/components'
 
 export default function Product({ pageContext: node }) {
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState(true)
     const [colors, setColors] = useState([])
     const [sizes, setSizes] = useState([])
 
