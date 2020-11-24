@@ -992,8 +992,7 @@ export const StyledProductDetail = styled.div`
       font-weight: bold;
     }
     & > .productDescription{
-      min-height: 120px;
-      max-height: 200px;
+      max-height: 120px;
     }
 
   }
