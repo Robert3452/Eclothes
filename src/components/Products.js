@@ -1,11 +1,22 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { connect } from 'react-redux';
+import { addToCart, addToProdId } from '../actions';
 import { StyledProducts, StyledItemProduct } from '../styles/components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import priceFormat from '../utils/priceFormat';
 
-export default function Products({ products }) {
+function Products({ products, ...props }) {
+    const { addToCart, cart, addToProdId } = props
+    const addProduct = ({ quantity, ...product }) => {
+        const indexFound = cart.findIndex(el => el._id === product._id)
+        if (indexFound >= 0)
+            addToProdId({ quantity, indexFound })
+        else
+            addToCart({ quantity, ...product })
+    }
+
     return (
-
         <StyledProducts>
             {products.map(({ node }, index) => node._id && (
                 <StyledItemProduct key={index}>
@@ -14,18 +25,30 @@ export default function Products({ products }) {
                             <img src={node.images[0].url}
                                 alt={node.shortDescription} />
                         </div>
-                        <hr />
                         <h6 className="productTitle">
                             {node.name}
                         </h6>
-                        <div className="priceSide">
-                            <span className="originalProductPrice">{node.variations[0].price}</span>
-                            <button className="btn_cart">{""}<FontAwesomeIcon icon={["fas", "cart-plus"]} /></button>
-                        </div>
+                        <hr />
                     </Link>
+                    <div className="priceSide">
+                        <span className="originalProductPrice">{priceFormat(node.variations[0].price)}</span>
+                        <button onClick={() => addProduct({ quantity: 1, ...node })} className="btn_cart">{""}<FontAwesomeIcon icon={["fas", "cart-plus"]} /></button>
+                    </div>
                 </StyledItemProduct>
             ))
             }
         </StyledProducts>
     )
 }
+const mapDispatchToProps = {
+    addToCart,
+    addToProdId
+}
+
+const mapStateToProps = state => {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products)
